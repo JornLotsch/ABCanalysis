@@ -140,19 +140,19 @@ def ABC_plot(ABCresults, CleanedData, ax=None):
     y = y/y[-1]
     y = y[~np.isinf(y)]
     x = np.arange(1, len(y)+1)/len(y)
-    pUnif = np.linspace(0, 1, 100)
+    pIdent = np.linspace(0, 1, 100)
     A = CleanedData_sorted["value"].min()
     MaxX = CleanedData_sorted["value"].max()
     if A == MaxX:
         A = 0
         MaxX = 1
     B = MaxX - A
-    ABCuniform = (-0.5 * B * pUnif**2 + MaxX * pUnif)/(A + 0.5 * B)
+    ABCuniform = (-0.5 * B * pIdent**2 + MaxX * pIdent)/(A + 0.5 * B)
 
     ax = ax or plt.gca()
     sns.scatterplot(ax=ax, x=x, y=y, color="none", edgecolor="blue")
     sns.lineplot(ax=ax, x=ABCresults["p"],
-                 y=ABCresults["ABC"], color="dodgerblue")
+                 y=ABCresults["ABC"], color="dodgerblue", label = "ABC")
     sns.lineplot(ax=ax, x=[ABCresults["A"].values.tolist()[0][0], ABCresults["A"].values.tolist()[0][0]],
                  y=[0, ABCresults["A"].values.tolist()[0][1]], color="salmon", linewidth=2)
     sns.lineplot(ax=ax, x=[0, ABCresults["A"].values.tolist()[0][0]],
@@ -161,9 +161,9 @@ def ABC_plot(ABCresults, CleanedData, ax=None):
                  y=[0, ABCresults["C"].values.tolist()[0][1]], color="salmon", linewidth=2)
     sns.lineplot(ax=ax, x=[0, ABCresults["C"].values.tolist()[0][0]],
                  y=[ABCresults["C"].values.tolist()[0][1], ABCresults["C"].values.tolist()[0][1]], color="salmon", linewidth=2)
-    sns.lineplot(ax=ax, x=pUnif, y=pUnif, color="magenta", linestyle="dashed")
-    sns.lineplot(ax=ax, x=pUnif, y=ABCuniform,
-                 color="green", linestyle="dotted")
+    sns.lineplot(ax=ax, x=pIdent, y=pIdent, color="magenta", linestyle="dashed", label = "Identity")
+    sns.lineplot(ax=ax, x=pIdent, y=ABCuniform,
+                 color="green", linestyle="dotted", label = "Uniform")
     ax.text(0.5 * ABCresults["A"].values.tolist()[0][0], .1,
             "Set A:\nn = " + str(len(ABCresults["Aind"])),
             ha='center', size='large', color='blue', weight='bold')
