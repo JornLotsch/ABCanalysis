@@ -5,7 +5,6 @@ Created on Mon Jan 17 11:22:35 2022
 
 @author: joern
 """
-#from scipy.interpolate import interp1d
 from pandas.api.types import is_numeric_dtype
 import pandas as pd
 import numpy as np
@@ -24,12 +23,6 @@ def ABC_clean_data(data):
     if not is_numeric_dtype(data):
         raise Warning("Data is not numeric")
         return
-
-    # if isinstance(data, pd.Series):
-    #     varnames = data.index
-    #     data = data.tolist()
-    # else:
-    #     varnames = ["Var"+str(i) for i in list(range(1, len(data)+1))]
 
     dfItems = pd.DataFrame(data)
     dfItems.columns = ["value"]
