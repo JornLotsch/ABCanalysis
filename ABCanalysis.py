@@ -5,6 +5,8 @@ Created on Mon Jan 17 11:22:35 2022
 
 @author: joern
 """
+# %% imports
+
 from pandas.api.types import is_numeric_dtype
 import pandas as pd
 import numpy as np
