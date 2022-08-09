@@ -2,10 +2,10 @@
 Nested computed ABC analysis (cABC): A method to reduce feature sets to their most relevant items. Implementation in Python.
 
 ## Author
-Jorn Lotsch  
-Data Science | Clinical Pharmacology  
+Jorn Lotsch
+Data Science | Clinical Pharmacology
 Goethe - University
-Frankfurt am Main  
+Frankfurt am Main
 Germany
 
 Alfred Ultsch
